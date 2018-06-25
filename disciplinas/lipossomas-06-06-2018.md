@@ -81,7 +81,13 @@ Os limpossomas unilamelares possuem apenas uma bicamada, mas podem ser classific
 ----  ----
 
 
-# Síntese e Loading
+# Criação
+
+Os lipossomas são formados de forma espontânea quando os lipídios são inseridos em um ambiente aquoso.
+
+----
+
+# Processo de Criação
 
 
 Todos os métodos de preparação dos lipossomas envolvem quatro estágios básicos:
@@ -94,13 +100,11 @@ Todos os métodos de preparação dos lipossomas envolvem quatro estágios bási
 
 ----
 
-# Síntese - Passivo
+# Criação - Passivo
 
 Os metodos de preparação passivos consistem em:
 * Dispersão mecânica
 * Dispersão no solvente
-* Remoção por detergente (Utilizado para remover material não encapsulado)
-
 
 
 ----
@@ -112,13 +116,48 @@ A dispersão mecânica pode ser feita através do método da Sonicação, que co
 
 ----
 
-# Síntese - Sonicação
+# Criação - Sonicação
 
 
 <img src="img/lipossoma/sonication.jpg">
 
+----
+
+# Célula de Pressão
+
+<img src="img/lipossoma/frenchcell.jpg" width = "600px">
+
+ Célula de pressão francesa
 
 
+ ----
+
+
+# Criação - Congelamento
+
+Os limpossomos SUV são congelados rapidamente e descongelados lentamente, então ocorre a formação do LUV.
+
+
+----
+
+# Injeção de Eter
+
+Uma solução de lípidos dissolvidos em éter dietílico ou mistura de éter-metanol é gradualmente injectada numa solução aquosa do material a ser encapsulado a 55 ° C a 65 ° C ou sob pressão reduzida. A consequente remoção de éter sob vácuo leva à criação de lipossomas.
+
+----
+
+# Injeção de Etanol
+
+
+<img src="img/lipossoma/ethanol-method.png">
+
+
+----
+
+# Outros métodos de Criação
+
+
+Além dos métodos apresentados, existem diversos outros métodos para a criação de lipossomas, como Reverse-phase evaporation.
 
 
 ----  ----
@@ -219,12 +258,45 @@ O encapsulamento de moléculas biologicamente ativas em nanotransportadores pode
 
 Em [Designing of ‘intelligent’ liposomes for efficient delivery of drugs](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1582-4934.2002.tb00450.x) é apresentado uma revisão bibliográfica sobre o estudo dos lipossomas na entrega de medicamentos.
 
+
+
+----
+
+## Sistema de entrega
+
+Em [Photoinactivation of different human tumor cell lines and sheep red blood cells in vitro by liposome-bound Zn(II) Phthalocyanine: Effects of cholesterol](https://www.sciencedirect.com/science/article/pii/S1011134410001132), foi feita uma avaliação sobre a fotoinativação in vitro de linhagens de células tumorais humanas por Zinco (II) Fosfatidilcolina (ZnPc), utilizando lipossoma unilamelar (LUV) como sistema de entrega, na presença e ausência de colesterol (CHOL) formulação.
+
 ----  ----
 
 # Conclusão
 
+
+## Vantagens
+
+* Os lipossomas aumentam a eficácia e o índice terapêutico dos medicamentos
+* Os lipossomas aumentam a estabilidade via encapsulamento
+* Os lipossomas são flexíveis, biocompatíveis, completamente biodegradáveis e não imunogênicos.
+* Os lipossomas reduzem a toxicidade do agente encapsulado
+* Os lipossomas ajudam a reduzir a exposição de tecidos sensíveis a drogas tóxicas
+
+----
+
+## Desvatagens
+
+* Baixa solubilidade
+* Baixo tempo de meia-vida
+* Produção pode ser cara
+
+
 ----  ----
 
 # Referencial Teórico
+
+* Liposome: classification, preparation, and applications (Abolfazl Akbarzadeh et al.)
+* Single bilayer liposomes prepared without sonication (ShmuelBatzriEdward D.Korn)
+* Photoinactivation of different human tumor cell lines and sheep red blood cells in vitro by liposome-bound Zn(II) Phthalocyanine: Effects of cholesterol (Carlos A. de Oliveira et al.)
+ * https://bit.ly/2LrVhTP
+
+
 
 ----  ----

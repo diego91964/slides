@@ -41,9 +41,8 @@
         function inicio (){
 
           var queryParam = getQueryParams(document.location.search);
-          var nomeArquivo = queryParam.nomeSlide +  '.md';
-          alert (nomeArquivo);
-
+          var nomeArquivo = queryParam.slide +  '.md';
+          
           var containerPrincipal = document.getElementById('containerTeste');
 
           var divSection = document.createElement("section");
