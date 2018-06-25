@@ -156,6 +156,7 @@ A principal diferença de um TSDB com os DB tradicionais é que tudo terá como 
 A forma mais simples de criar uma instância de um influxDb é utilizando Docker.
 
 ```
+docker network create influxdb
 
 docker run -d -p 8083:8083 -p 8086:8086 --net=influxdb -v $PWD/influxdb:/var/lib/influxdb -e INFLUXDB_ADMIN_ENABLED=true -e INFLUXDB_ADMIN_USER=root influxdb:1.0
 
@@ -209,6 +210,11 @@ curl -i -XPOST 'http://localhost:8086/query?q=select+threads+from+microservice_s
 
 A web api do influxDb permite uma visualização muito básica dos dados. Então, precisamos de alguma ferramenta de exibição de Time Series, para este exemplo utilizaremos a ferramenta [Grafana](https://grafana.com/).
 
+```
+wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.1.4.linux-x64.tar.gz
+tar -zxvf grafana-5.1.4.linux-x64.tar.gz
+
+```
 
 ----
 
@@ -257,6 +263,7 @@ Vamos utilizar uma série de microserviços gerando dados, para isto, vamos util
 a api [Netflix Eureka](https://github.com/Netflix/eureka) para realizar o service discovery.
 
 
+
 ----
 
 ## Eureka Service Discovery
@@ -266,6 +273,52 @@ a api [Netflix Eureka](https://github.com/Netflix/eureka) para realizar o servic
 
 Fonte: [HowToDoInJava](https://howtodoinjava.com/spring/spring-cloud/spring-cloud-service-discovery-netflix-eureka/)
 
+
+
+----
+
+## Projeto de Teste
+
+
+Para executar os projetos a seguir é necessário a instalação do [Apache Maven](https://maven.apache.org/download.cgi)
+
+```
+$ git clone https://github.com/diego91964/demo-influx-springboot.git
+$ cd demo-influx-springboot
+$ mvn clean install -f service-discovery
+$ mvn clean install -f service-metrics-influx
+$ mvn clean install -f mservice-1
+$ mvn clean install -f mservice-2
+$ mvn clean install -f mservice-3
+$ java -jar service-discovery/target/service-discovery.jar
+$ java -jar mservice-1/target/mservice-1.jar
+$ java -jar mservice-2/target/mservice-3.jar
+$ java -jar mservice-3/target/mservice-2.jar
+$ java -jar service-metrics-influx/target/service-metrics-influx.jar
+
+```
+
+----
+
+## Criando Datasource Grafana
+
+<img src="palestras/2018/nosql-iftm/img/grafana-datasource.png">
+
+----
+
+## Importando o Dashboard
+
+Importar arquivo grafana/dashboard.json no grafana
+
+<img src="palestras/2018/nosql-iftm/img/grafana-import.png">
+
+Créditos: [ypvillazon](https://github.com/ypvillazon)
+
+----
+
+## Demo Dashboard
+
+<img src="palestras/2018/nosql-iftm/img/grafana-demo-2.png">
 
 ----  ----
 
