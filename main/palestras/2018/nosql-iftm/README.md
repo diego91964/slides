@@ -165,7 +165,124 @@ docker run -d -p 8083:8083 -p 8086:8086 --net=influxdb -v $PWD/influxdb:/var/lib
 
 ----
 
+## InfluxDB - Conceitos
 
+
+Antes de começarmos a inserir ou buscar dados dentro do InfluxDB é muito interessante que entendamos os conceitos do banco.
+
+
+----
+
+## Conceitos - Database
+
+Um Database consiste em um container lógico para o usuário, com políticas de retenção, queries contínuas e dados isolados.
+
+----
+
+## Conceitos - Duration
+
+É o tempo de duração de um dado a partir da inserção. [Documentação](https://docs.influxdata.com/influxdb/v1.5/query_language/spec/#durations)
+
+
+----
+
+## Conceitos - Field
+
+É um par chave (field key) e valor (field value) que pode ser armazenado. Mas, um field não poderá ser indexado pelo InfluxDB.
+
+
+----
+
+## Conceitos - Field Set
+
+<img src="palestras/2018/nosql-iftm/img/field-set-influxdb.jpeg">
+
+Fonte: [An introduction to InfluxDB](https://www.linkedin.com/pulse/introduction-influxdb-kristof-bruylants)
+
+
+
+----
+
+## Conceitos - Tag
+
+É um par chave valor que armazena metadados.
+
+
+----
+
+## Conceitos - TagSet
+
+<img src="palestras/2018/nosql-iftm/img/tag-set-influxdb.jpeg">
+
+Fonte: [An introduction to InfluxDB](https://www.linkedin.com/pulse/introduction-influxdb-kristof-bruylants)
+
+----
+
+## Conceitos - Function
+
+São funções de [agregação](https://docs.influxdata.com/influxdb/v1.5/query_language/functions/#aggregations),
+ [transformação](https://docs.influxdata.com/influxdb/v1.5/query_language/functions/#transformations) e [seleção](https://docs.influxdata.com/influxdb/v1.5/query_language/functions/#selectors).
+
+
+----
+
+## Conceitos - Measurement
+
+Consiste na parte do InfluxDB que define os field (Parte principal do InfluxDB).
+
+
+----
+
+## Conceitos - Series
+
+<img src="palestras/2018/nosql-iftm/img/measurement-influxdb.jpeg">
+
+Fonte: [An introduction to InfluxDB](https://www.linkedin.com/pulse/introduction-influxdb-kristof-bruylants)
+
+----
+
+## Conceitos - Point
+
+<img src="palestras/2018/nosql-iftm/img/points-influxdb.jpeg">
+
+Fonte: [An introduction to InfluxDB](https://www.linkedin.com/pulse/introduction-influxdb-kristof-bruylants)
+
+
+----
+
+## Conceitos - Node
+
+Cada instância do InfluxDB executada é chamada de Node.
+
+
+----
+
+## Conceitos - Query
+
+É uma operação de busca no banco.
+
+```
+SELECT <field_key>[,<field_key>,<tag_key>] FROM <measurement_name>[,<measurement_name>]
+
+SELECT *   Retorna todos fields e tags.
+
+SELECT "<field_key>"   Retorna field específico.
+
+SELECT "<field_key>","<field_key>"   Retorna mais de um field.
+
+SELECT "<field_key>","<tag_key>"  Retorna um field específico e uma tag. Quando uma clausula select inclui uma tag, deve incluir um field.
+
+```
+
+
+----
+
+## Conceitos - Schema
+
+Os dados são organizados semanticamente utilizando um schema.
+
+
+----
 ## InfluxDb - Rest API
 
 O InfluxDB possui uma api rest que permite executar todos os comandos através do curl.
@@ -371,5 +488,163 @@ Ter uma grande massa de dados é algo muito bom, desde que você nunca precise d
 ## Como ficaria utilizando grafo?
 
 
-
 <img src="palestras/2018/nosql-iftm/img/neo4j-dados-estrutura.png" width = "50%">
+
+----
+
+
+## Como armazenar esta etrutura ?
+
+Vamos utilizar o banco [Neo4j](https://neo4j.com/developer/).
+
+----
+
+## Como funciona ?
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/-dCeFEqDkUI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+----
+
+## Neo4j - Relacionamentos
+
+<img src="palestras/2018/nosql-iftm/img/neo4j-dados-relacionamento.png" width = "50%">
+
+
+----
+
+
+## Neo4j - Propriedades
+
+<img src="palestras/2018/nosql-iftm/img/neo4j-dados-propriedades.png" width = "50%">
+
+
+----
+
+## Neo4j - Instalação
+
+
+```
+
+$ docker run --publish=7474:7474 --publish=7687:7687  --volume=$HOME/neo4j/data:/data  --volume=$HOME/neo4j/logs:/logs  neo4j:3.0
+
+```
+
+----
+
+## Neo4j - Cypher
+
+A linguagem [Cypher](https://neo4j.com/docs/developer-manual/current/cypher/) é uma linguagem para a manipulação de grafos, ela possui uma sintaxe simples e intuitiva.
+
+
+----
+
+
+## Neo4j - Inserção de Dados
+
+```
+
+CREATE (n:Person { name: 'Andres', title: 'Developer' })
+
+```
+
+----
+
+
+## Neo4j - Buscas
+
+<img src="palestras/2018/nosql-iftm/img/neo4j-buscas.png" >
+
+----
+
+## Neo4j - Questões
+
+Qual ip um determinado usuário utilizou para acessar um app específico?
+
+```
+
+MATCH (user:Usuario) -[:usuario_request] -> (call:Requisicao) <- [:aplicacao_request] - (apl:Aplicacao) ,
+      (ip:IP) - [ip_request] -> (call)
+WHERE user.idUsuario = '240' AND apl.idAplicacao = '1544'
+RETURN user,apl
+
+```
+
+----
+
+## Neo4j - Questões
+
+Quais usuários utilizaram um ip?
+
+```
+
+## Encontrar um ip que foi possui mais de uma requisição
+
+MATCH (n:IP) - [r:ip_request] -> () WHERE n.ip = '24.82.53.89' return n, count(r)
+
+MATCH (user:Usuario) -[:usuario_request] -> (call:Requisicao) <- [:ip_request] - (ipr:IP)
+WHERE ipr.ip = '24.82.53.89'
+RETURN user,ipr
+
+```
+
+----
+
+## Neo4j - Questões
+
+Quais serviços foram utilizados de uma aplicação?
+
+```
+
+MATCH (url:URL) -[:url_request] -> (call:Requisicao) <- [:aplicacao_request] - (apl:Aplicacao)
+WHERE apl.idAplicacao = '1544'
+RETURN url, apl
+
+```
+
+----
+
+## Neo4j - Questões
+
+Qual o maior tempo de resposta de uma requisição?
+
+```
+
+MATCH (call:Requisicao)
+RETURN max(call.tempo)
+
+```
+
+----
+
+## Neo4j - Questões
+
+Qual serviço é o mais 'pesado' de uma aplicação?
+
+```
+
+MATCH (url:URL) -[:url_request] -> (call:Requisicao) <- [:aplicacao_request] - (apl:Aplicacao)
+WHERE apl.idAplicacao = '1544'
+RETURN max(call.tempo)
+
+```
+
+----
+
+## Neo4j - Questões
+
+Quais são os parâmetros passados para um serviço?
+
+```
+
+# Todos os serviços
+
+MATCH (url:URL) -[:url_request] -> (call:Requisicao) <- [:resp_request] - (par:Parametro)
+RETURN url,par
+
+# Um serviço específico
+
+MATCH (url:URL) -[:url_request] -> (call:Requisicao) <- [:resp_request] - (par:Parametro)
+WHERE url.url = '/fugit/quisque'
+RETURN url,par
+
+```
