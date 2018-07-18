@@ -283,6 +283,7 @@ Os dados são organizados semanticamente utilizando um schema.
 
 
 ----
+
 ## InfluxDb - Rest API
 
 O InfluxDB possui uma api rest que permite executar todos os comandos através do curl.
