@@ -1,9 +1,70 @@
 ## Otimizando análise de logs e rastreamento de usuários utilizando Grafos
 
 
-[Diego Silva](http://github.com/diego91964)
+----
+
+## Hoje você vai saber como NoSQL mudou a minha vida de DevOps
+
+e pode ajudar você a mudar a vida de outras pessoas.
 
 ----
+
+# Por que você usa NoSQL?
+
+
+----
+
+<!-- .slide: data-background="#ff6d00" -->
+
+# O meu problema
+
+----
+
+
+# Grandes quantidades de dados, pouco estruturados, em formato de texto, que deveriam ser interpretados.
+
+----
+
+# Quais informações precisavam ser extraídas?
+
+----
+
+<!-- .slide: data-background="#ff9e40" -->
+
+# Quais usuários se conectam do mesmo computador?
+
+----
+
+<!-- .slide: data-background="#ff9e40" -->
+
+# Qual serviço é o mais 'pesado' de uma aplicação?
+
+----
+
+<!-- .slide: data-background="#ff9e40" -->
+# Quais são os perfis de usuário que acessam uma aplicação?
+
+----
+
+<!-- .slide: data-background="#ff9e40" -->
+# Qual a linha do tempo de um erro reportado?
+
+----
+
+<!-- .slide: data-background="#ff9e40" -->
+# Quais são os erros mais frequentes do sistema e com quem acontecem?
+
+
+----
+
+# Como modelar estes dados?
+
+----
+
+# Depois de alguns experimentos, escolhemos os Grafos
+
+----
+
 
 # O que são grafos?
 
@@ -50,15 +111,17 @@ Academicamente ?
 * Carregar Dados
 * Buscar Dados
 
-----
-
-# Cenário
-
-Pense no seguinte cenário: Você elaborou uma aplicação extremamente segura. Como parte desta segurança, fez um sistema de logs capaz de armazenar grande parte dos estados da aplicação.
-
 
 ----
 
 # Dados
 
 <img src="palestras/2018/tdcsp-2018/img/neo4j-dados-selecionados.png" width = "80%">
+
+----
+
+<img src="palestras/2018/tdcsp-2018/img/neo4j-dados-sql.png" width = "80%">
+
+----
+
+<img src="palestras/2018/tdcsp-2018/img/neo4j-dados-estrutura.png" width = "50%">
