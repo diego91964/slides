@@ -373,3 +373,8 @@ body {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.4);
   padding: 5px; }
+
+
+  html.dimbg .slide-background {
+    opacity: 0.6 !important;
+  }

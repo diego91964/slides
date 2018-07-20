@@ -7,18 +7,35 @@
         <title>Programação Orientada a Objetos</title>
 
         <link rel="stylesheet" href="./reveal.js/css/reveal.css">
-        <link rel="stylesheet" href="./reveal.js/css/theme/solarized.css" id="theme">
+        <link rel="stylesheet" href="./reveal.js/css/theme/tdc.css" id="theme">
         <link rel="stylesheet" href="./reveal.js/lib/css/zenburn.css">
     </head>
 
     <body onload="inicio()">
           <div  class="reveal">
+            <div class= "tdc-head-hr">
+				           <div class = "tdc-bar-block-1"></div>
+				           <div class = "tdc-bar-block-2"></div>
+				           <div class = "tdc-bar-block-3"></div>
+				           <div class = "tdc-bar-block-4"></div>
+				           <div class = "tdc-bar-block-5"></div>
+				           <div class = "tdc-bar-block-6"></div>
+			       </div>
               <div class="slides" id="containerTeste">
                   <!--<section data-markdown="README.md"
                            data-separator="^\n----  ----\n$"
                            data-separator-vertical="^\n----\n$">
                   </section>-->
               </div>
+              <div class= "tdc-foot-hr">
+          			<div class = "tdc-bar-block-1"></div>
+          			<div class = "tdc-bar-block-2"></div>
+          			<div class = "tdc-bar-block-3"></div>
+          			<div class = "tdc-bar-block-4"></div>
+          			<div class = "tdc-bar-block-5"></div>
+          			<div class = "tdc-bar-block-6"></div>
+          		</div>
+
           </div>
         <script src="./reveal.js/lib/js/head.min.js"></script>
         <script src="./reveal.js/js/reveal.js"></script>
@@ -42,7 +59,7 @@
 
           var queryParam = getQueryParams(document.location.search);
           var nomeArquivo = queryParam.slide +  '.md';
-          
+
           var containerPrincipal = document.getElementById('containerTeste');
 
           var divSection = document.createElement("section");
@@ -97,6 +114,7 @@
                   markers: false,
                   custom: false,
                   themes: [
+                      { name: 'TDC', theme: './reveal.js/css/theme/tdc.css' },
                       { name: 'Black', theme: './reveal.js/css/theme/black.css' },
                       { name: 'White', theme: './reveal.js/css/theme/white.css' },
                       { name: 'League', theme: './reveal.js/css/theme/league.css' },
